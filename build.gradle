@@ -1,0 +1,37 @@
+//buildScript块的repositories主要是为了Gradle脚本自身的执行，获取脚本依赖插件。
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://oss.sonatype.org/content/groups/public/" }
+        maven { url "https://repo.spring.io/libs-milestone/" }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        //classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        //classpath "se.transmode.gradle:gradle-docker:${transmodeGradleDockerVersion}"
+    }
+}
+
+allprojects {
+    group 'com.gpj'
+    version '0.0.1-SNAPSHOT'
+
+//    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    //allprojects块的repositories用于多项目构建，为所有项目提供共同所需依赖包。而子项目可以配置自己的repositories以获取自己独需的依赖包。
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://oss.sonatype.org/content/groups/public/" }
+        maven { url "https://repo.spring.io/libs-milestone/" }
+        jcenter()
+        mavenCentral()
+    }
+}
+
+subprojects {
+
+}

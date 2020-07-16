@@ -1,0 +1,21 @@
+rootProject.name = 'eden-cloud'
+
+include 'eden-common:eden-common-core'
+findProject(':eden-common:eden-common-core')?.name = 'eden-common-core'
+
+include 'eden-common:eden-ccommon-security'
+findProject(':eden-common:eden-ccommon-security')?.name = 'eden-ccommon-security'
+
+include 'eden-server:eden-server-job'
+findProject(':eden-server:eden-server-job')?.name = 'eden-server-job'
+
+include 'eden-server:eden-server-generator'
+findProject(':eden-server:eden-server-generator')?.name = 'eden-server-generator'
+
+include 'eden-server:eden-server-starter'
+findProject(':eden-server:eden-server-starter')?.name = 'eden-server-starter'
+include 'eden-common:eden-common-tools'
+findProject(':eden-common:eden-common-tools')?.name = 'eden-common-tools'
+include 'eden-gateway'
+include 'eden-monitor'
+
