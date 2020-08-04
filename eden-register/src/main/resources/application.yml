@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: EDEN-Register
+  security:
+    user:
+      name: peijia
+      password: 123456
 
 eureka:
   instance:
