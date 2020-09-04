@@ -15,7 +15,7 @@ buildscript {
 }
 
 allprojects {
-    group 'com.gpj'
+    group 'com.peijia'
     version '0.0.1-SNAPSHOT'
 
 //    apply plugin: 'java'

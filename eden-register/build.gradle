@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.gpj'
+group = 'com.peijia'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
