@@ -22,3 +22,5 @@ include 'eden-gateway'
 include 'eden-monitor'
 include 'eden-register'
 include 'eden-auth'
+include 'eden-gateway'
+
