@@ -25,4 +25,6 @@ include 'eden-auth'
 include 'eden-gateway'
 include 'eden-server:eden-server-system'
 findProject(':eden-server:eden-server-system')?.name = 'eden-server-system'
+include 'eden-server:eden-server-test'
+findProject(':eden-server:eden-server-test')?.name = 'eden-server-test'
 

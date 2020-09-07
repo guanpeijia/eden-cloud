@@ -2,13 +2,14 @@ package com.peijia.auth.controller;
 
 import com.peijia.auth.domain.AuthException;
 import com.peijia.base.BaseResponse;
+import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.trace.http.HttpTrace.Principal;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Peijia
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @desc 对外提供一些REST服务
  * @create 2020/8/15 20:19
  */
+@RestController
 public class SecurityController {
 
     @Autowired
