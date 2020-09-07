@@ -1,6 +1,11 @@
 package com.peijia.auth.configure;
 
+import com.peijia.auth.domain.AuthException;
+import com.peijia.auth.properties.EdenAuthProperties;
+import com.peijia.auth.properties.EdenClientsProperties;
 import com.peijia.auth.service.impl.UserDetailServiceImpl;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +13,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -34,14 +40,29 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
     private UserDetailServiceImpl userDetailService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private EdenAuthProperties edenAuthProperties;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-            .withClient("eden")
-            .secret(passwordEncoder.encode("123456"))
-            .authorizedGrantTypes("password", "refresh_token")
-            .scopes("all");
+        EdenClientsProperties[] clientsArray = edenAuthProperties.getClients();
+        InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
+        if (ArrayUtils.isNotEmpty(clientsArray)) {
+            for (EdenClientsProperties client : clientsArray) {
+                if (StringUtils.isBlank(client.getClient())) {
+                    throw new AuthException("client不能为空");
+                }
+                if (StringUtils.isBlank(client.getSecret())) {
+                    throw new AuthException("secret不能为空");
+                }
+                String[] grantTypes = StringUtils
+                    .splitByWholeSeparatorPreserveAllTokens(client.getGrantType(), ",");
+                builder.withClient(client.getClient())
+                    .secret(passwordEncoder.encode(client.getSecret()))
+                    .authorizedGrantTypes(grantTypes)
+                    .scopes(client.getScope());
+            }
+        }
     }
 
     @Override
