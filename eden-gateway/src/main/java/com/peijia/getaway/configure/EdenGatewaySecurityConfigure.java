@@ -1,4 +1,4 @@
-package com.peijia.getaway;
+package com.peijia.getaway.configure;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

@@ -1,9 +1,13 @@
 package com.peijia.auth.configure;
 
+import com.peijia.common.handler.EdenAccessDeniedHandler;
+import com.peijia.common.handler.EdenAuthExceptionEntryPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * @author Peijia
@@ -17,6 +21,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
 
+    @Autowired
+    private EdenAccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private EdenAuthExceptionEntryPoint exceptionEntryPoint;
+    
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -24,5 +33,11 @@ public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers("/**").authenticated();
+    }
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.authenticationEntryPoint(exceptionEntryPoint)
+            .accessDeniedHandler(accessDeniedHandler);
     }
 }

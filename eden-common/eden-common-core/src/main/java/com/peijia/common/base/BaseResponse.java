@@ -1,4 +1,4 @@
-package com.peijia.base;
+package com.peijia.common.base;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

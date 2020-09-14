@@ -1,5 +1,6 @@
 package com;
 
+import com.peijia.common.annotation.EnableEdenAuthExceptionHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -8,6 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author Peijia
  */
 @EnableDiscoveryClient
+@EnableEdenAuthExceptionHandler
 @SpringBootApplication
 public class EdenAuthApplication {
 

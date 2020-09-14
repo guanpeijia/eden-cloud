@@ -32,6 +32,7 @@ eureka:
     serviceUrl:
       # 指定Eureka服务端地址
       defaultZone: http://eden:123456@localhost:8081/register/eureka/
+
 zuul:
   routes:
     auth:
@@ -48,6 +49,9 @@ zuul:
       path: /test/**
       serviceId: Eden-Server-Test
       sensitiveHeaders: "*"
+  SendErrorFilter:
+    error:
+      disable: true
   # 设置为true时，表示开启重试机制
   retryable: true
   # Zuul配合Eureka后会有一套默认的配置规则，这里我们只想请求根据我们显示配置的路由规则走，所以设置为*，表示关闭所有默认路由配置规则；

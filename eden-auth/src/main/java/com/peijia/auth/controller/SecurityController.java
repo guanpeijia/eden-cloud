@@ -1,7 +1,7 @@
 package com.peijia.auth.controller;
 
 import com.peijia.auth.domain.AuthException;
-import com.peijia.base.BaseResponse;
+import com.peijia.common.base.BaseResponse;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;

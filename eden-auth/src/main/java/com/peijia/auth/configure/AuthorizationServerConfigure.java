@@ -1,9 +1,9 @@
 package com.peijia.auth.configure;
 
-import com.peijia.auth.domain.AuthException;
 import com.peijia.auth.properties.EdenAuthProperties;
 import com.peijia.auth.properties.EdenClientsProperties;
 import com.peijia.auth.service.impl.UserDetailServiceImpl;
+import com.peijia.auth.translator.EdenWebResponseExceptionTranslator;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +42,8 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
     private PasswordEncoder passwordEncoder;
     @Autowired
     private EdenAuthProperties edenAuthProperties;
+    @Autowired
+    private EdenWebResponseExceptionTranslator exceptionTranslator;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -50,10 +52,10 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
         if (ArrayUtils.isNotEmpty(clientsArray)) {
             for (EdenClientsProperties client : clientsArray) {
                 if (StringUtils.isBlank(client.getClient())) {
-                    throw new AuthException("client不能为空");
+                    throw new Exception("client不能为空");
                 }
                 if (StringUtils.isBlank(client.getSecret())) {
-                    throw new AuthException("secret不能为空");
+                    throw new Exception("secret不能为空");
                 }
                 String[] grantTypes = StringUtils
                     .splitByWholeSeparatorPreserveAllTokens(client.getGrantType(), ",");
@@ -66,11 +68,13 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
     }
 
     @Override
+    @SuppressWarnings("all")
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(tokenStore())
             .userDetailsService(userDetailService)
             .authenticationManager(authenticationManager)
-            .tokenServices(defaultTokenServices());
+            .tokenServices(defaultTokenServices())
+            .exceptionTranslator(exceptionTranslator);
     }
 
     @Bean
