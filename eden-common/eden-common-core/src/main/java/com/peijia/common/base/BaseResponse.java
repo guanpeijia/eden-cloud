@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@SuppressWarnings("all")
 public class BaseResponse<T> {
 
     /**

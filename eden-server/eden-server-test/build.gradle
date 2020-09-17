@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
     compile project(':eden-common:eden-common-core')
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul', version: '2.2.5.RELEASE'
