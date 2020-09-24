@@ -15,7 +15,7 @@ public class TestController {
 
     @GetMapping("info")
     public String test(){
-        return "febs-server-system";
+        return "eden-server-system";
     }
 
     @GetMapping("user")

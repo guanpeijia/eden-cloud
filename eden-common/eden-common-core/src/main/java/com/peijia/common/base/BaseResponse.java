@@ -1,5 +1,6 @@
 package com.peijia.common.base;
 
+import java.io.Serializable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +12,10 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@SuppressWarnings("all")
-public class BaseResponse<T> {
+@SuppressWarnings({"rawtypes", "unchecked"})
+public class BaseResponse<T> implements Serializable {
+
+    private static final long serialVersionUID = 44266938953077267L;
 
     /**
      * 成功返回码
@@ -24,12 +27,14 @@ public class BaseResponse<T> {
      */
     public static final String CODE_ERROR = "-1";
 
+
     private String code;
 
     private T data;
 
     private String message;
 
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public BaseResponse message(String message){
         this.code = CODE_ERROR;
         this.message = message;
