@@ -1,8 +1,6 @@
 package com.peijia;
 
-import com.peijia.common.annotation.EnableEdenAuthExceptionHandler;
-import com.peijia.common.annotation.EnableEdenOauth2FeignClient;
-import com.peijia.common.annotation.EnableEdenServerProtect;
+import com.peijia.common.annotation.EdenCloudApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,11 +13,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * @desc
  * @create 2020/9/7 10:53
  */
-@EnableEdenServerProtect
-@EnableEdenOauth2FeignClient
+@EdenCloudApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-@EnableEdenAuthExceptionHandler
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
 public class EdenServerTestApplication {
