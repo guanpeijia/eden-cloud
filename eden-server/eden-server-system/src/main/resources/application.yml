@@ -15,7 +15,10 @@ spring:
         max-active: 2000
         max-wait: 10000
     timeout: 5000
-
+  autoconfigure:
+    # common模块里引入了mybatis-plus-boot-starter，该starter包含数据库自动装配配置，而server-system模块并没有配置数据库
+    # 所以我们需要在它们的配置文件application.yml里添加如下配置来关闭数据库自动装配:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 eureka:
   instance:
     # 向Eureka 服务端发送心跳的间隔时间，单位为秒，用于服务续约。表明当前服务没有宕机；
