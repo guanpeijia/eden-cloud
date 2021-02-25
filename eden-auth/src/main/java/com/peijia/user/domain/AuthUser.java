@@ -1,7 +1,11 @@
 package com.peijia.user.domain;
 
-import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
 /**
  * @author Peijia
@@ -10,20 +14,41 @@ import lombok.Data;
  * @create 2020/8/15 19:47
  */
 @Data
-public class AuthUser implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class AuthUser extends User {
 
     private static final long serialVersionUID = -1364329301619409069L;
 
-    private String username;
+    private Long userId;
 
-    private String password;
+    private String avatar;
 
-    private boolean accountNonExpired = true;
+    private String email;
 
-    private boolean accountNonLocked= true;
+    private String mobile;
 
-    private boolean credentialsNonExpired= true;
+    private String sex;
 
-    private boolean enabled= true;
+    private Long deptId;
+
+    private String deptName;
+
+    private String roleId;
+
+    private String roleName;
+
+    private Date lastLoginTime;
+
+    private String description;
+
+    private String status;
+
+    public AuthUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, authorities);
+    }
+
+    public AuthUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    }
 
 }
