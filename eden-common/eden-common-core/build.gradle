@@ -27,5 +27,7 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.2.5.RELEASE'
 
     compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.2'
+    compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.9.0'
+
 
 }
