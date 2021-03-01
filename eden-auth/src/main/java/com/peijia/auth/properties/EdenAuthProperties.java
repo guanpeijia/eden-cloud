@@ -33,4 +33,14 @@ public class EdenAuthProperties {
      * refreshTokenValiditySeconds用于指定refresh_token的有效时间，默认值为60 * 60 * 24 * 7秒
      */
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
+
+    /**
+     * 验证码配置类
+     */
+    private ValidateCodeProperties code = new ValidateCodeProperties();
+
+    /**
+     * 免认证路径
+     */
+    private String anonUrl;
 }

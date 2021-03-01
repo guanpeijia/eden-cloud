@@ -36,7 +36,7 @@ dependencies {
 
     compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '3.3.1'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
-
+    compile 'com.github.whvcse:easy-captcha:1.6.2'
 }
 
 test {

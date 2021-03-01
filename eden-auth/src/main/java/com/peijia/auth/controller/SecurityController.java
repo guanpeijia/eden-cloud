@@ -1,9 +1,13 @@
 package com.peijia.auth.controller;
 
 import com.peijia.auth.domain.AuthException;
+import com.peijia.auth.service.ValidateCodeService;
 import com.peijia.common.base.BaseResponse;
+import com.peijia.common.exception.ValidateCodeException;
+import java.io.IOException;
 import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -22,6 +26,14 @@ public class SecurityController {
 
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
+
+    @Autowired
+    private ValidateCodeService validateCodeService;
+
+    @GetMapping("captcha")
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException, ValidateCodeException {
+        validateCodeService.create(request, response);
+    }
 
     @GetMapping("oauth/test")
     public String testOauth() {
