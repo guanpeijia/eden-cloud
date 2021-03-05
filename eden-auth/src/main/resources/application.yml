@@ -24,7 +24,7 @@ spring:
         max-pool-size: 15
         min-idle: 5
         connection-test-query: select 1
-        pool-name: FebsHikariCP
+        pool-name: EdenHikariCP
       primary: base
       datasource:
         base:

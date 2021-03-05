@@ -46,8 +46,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 validateCode(httpServletRequest);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
-                BaseResponse febsResponse = new BaseResponse();
-                EdenUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, febsResponse.message(e.getMessage()));
+                BaseResponse edenResponse = new BaseResponse();
+                EdenUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, edenResponse.message(e.getMessage()));
                 log.error(e.getMessage(), e);
             }
         } else {

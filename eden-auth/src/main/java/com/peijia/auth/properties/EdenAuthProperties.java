@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
  * @className EdenAuthProperties
  * @desc @PropertySource(value = {"classpath:eden-auth.properties"})用于指定读取的配置文件路径；
 *  @desc @ConfigurationProperties(prefix = "eden.auth")指定了要读取的属性的统一前缀名称为eden.auth；@SpringBootConfiguration实质上为
- * @desc @Component的派生注解，用于将FebsAuthProperties纳入到IOC容器中。
+ * @desc @Component的派生注解，用于将EdenAuthProperties纳入到IOC容器中。
  * @create 2020/9/7 16:29
  */
 @Data
