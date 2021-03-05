@@ -22,5 +22,6 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.2.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.2.4.RELEASE'
+    compile group: 'com.alibaba.csp', name: 'sentinel-zuul-adapter', version: '1.8.1'
 
 }
