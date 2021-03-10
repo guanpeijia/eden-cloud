@@ -1,4 +1,4 @@
-package com.peijia.auth.handler;
+package com.peijia.system.server.handler;
 
 import com.peijia.common.handler.BaseExceptionHandler;
 import org.springframework.core.Ordered;

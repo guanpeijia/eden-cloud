@@ -2,7 +2,7 @@ package com.peijia.auth.manager;
 
 import com.peijia.auth.menu.domain.Menu;
 import com.peijia.auth.menu.mapper.MenuMapper;
-import com.peijia.auth.user.domain.User;
+import com.peijia.common.domain.User;
 import com.peijia.auth.user.mapper.UserMapper;
 import java.util.List;
 import java.util.stream.Collectors;

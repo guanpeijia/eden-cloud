@@ -40,4 +40,37 @@ public class BaseResponse<T> implements Serializable {
         this.message = message;
         return this;
     }
+
+    public static <T> BaseResponse<T> success(T data) {
+        BaseResponse<T> basicResponseVo = new BaseResponse<>();
+        basicResponseVo.setCode(CODE_SUCCESS);
+        basicResponseVo.setData(data);
+        return basicResponseVo;
+    }
+
+    public static <T> BaseResponse<T> success() {
+        return success(null);
+    }
+
+    public static <T> BaseResponse<T> error(String message) {
+        BaseResponse<T> basicResponseVo = new BaseResponse<>();
+        basicResponseVo.setCode(CODE_ERROR);
+        basicResponseVo.setMessage(message);
+        return basicResponseVo;
+    }
+
+    public static <T> BaseResponse<T> error(T context) {
+        BaseResponse<T> basicResponseVo = new BaseResponse<>();
+        basicResponseVo.setCode(CODE_ERROR);
+        basicResponseVo.setData(context);
+        return basicResponseVo;
+    }
+
+    public static <T> BaseResponse<T> error(T context,Integer code) {
+        BaseResponse<T> basicResponseVo = new BaseResponse<>();
+        basicResponseVo.setCode(CODE_ERROR);
+        basicResponseVo.setData(context);
+        return basicResponseVo;
+    }
+
 }

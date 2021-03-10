@@ -1,7 +1,7 @@
 package com.peijia.auth.service.impl;
 
 import com.peijia.auth.manager.UserManager;
-import com.peijia.auth.user.domain.User;
+import com.peijia.common.domain.User;
 import com.peijia.user.domain.AuthUser;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

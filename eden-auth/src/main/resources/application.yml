@@ -35,7 +35,7 @@ spring:
 
 mybatis-plus:
   # 指定别名扫描路径，该路径下的实体类将自动配置别名，默认为类名首字母小写。配置别名后，便可以直接在MyBatis XML文件里使用了；
-  type-aliases-package: com.peijia.auth.*.domain
+  type-aliases-package: com.peijia.**.domain
   # 指定MyBatis XML文件路径；
   mapper-locations: classpath:mapper/*.xml
   configuration:

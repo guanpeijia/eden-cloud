@@ -1,10 +1,13 @@
-package com.peijia.auth.user.domain;
+package com.peijia.common.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.peijia.common.validator.constraints.Mobile;
 import java.util.Date;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
@@ -26,6 +29,7 @@ public class User {
      * 用户名
      */
     @TableField(value = "USERNAME")
+    @Size(min = 4, max = 10, message = "{range}")
     private String username;
 
     /**
@@ -44,12 +48,15 @@ public class User {
      * 邮箱
      */
     @TableField(value = "EMAIL")
+    @Size(max = 50, message = "{noMoreThan}")
+    @Email(message = "{email}")
     private String email;
 
     /**
      * 联系电话
      */
     @TableField(value = "MOBILE")
+    @Mobile(message = "{mobile}")
     private String mobile;
 
     /**
@@ -79,7 +86,7 @@ public class User {
     /**
      * 性别 0男 1女 2保密
      */
-    @TableField(value = "SSEX")
+    @TableField(value = "SEX")
     private String sex;
 
     /**
@@ -105,6 +112,7 @@ public class User {
 
     @TableField(exist = false)
     private String createTimeTo;
+
     /**
      * 角色 ID
      */
@@ -134,7 +142,7 @@ public class User {
 
     public static final String COL_LAST_LOGIN_TIME = "LAST_LOGIN_TIME";
 
-    public static final String COL_SSEX = "SSEX";
+    public static final String COL_SEX = "SEX";
 
     public static final String COL_AVATAR = "AVATAR";
 

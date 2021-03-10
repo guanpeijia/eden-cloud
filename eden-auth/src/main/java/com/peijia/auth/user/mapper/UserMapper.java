@@ -1,7 +1,7 @@
 package com.peijia.auth.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.peijia.auth.user.domain.User;
+import com.peijia.common.domain.User;
 
 /**
  * @className      UserMapper
