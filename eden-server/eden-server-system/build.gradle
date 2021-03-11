@@ -6,12 +6,14 @@ plugins {
 
 group 'com.peijia'
 version '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
     compile project(':eden-common:eden-common-core')
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul', version: '2.2.5.RELEASE'
@@ -24,5 +26,7 @@ dependencies {
     compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '3.3.1'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
     compile group: 'p6spy', name: 'p6spy', version: '3.9.1'
+
+    compile group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 
 }
