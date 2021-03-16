@@ -27,6 +27,8 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
     compile group: 'p6spy', name: 'p6spy', version: '3.9.1'
 
-    compile group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 
 }

@@ -48,7 +48,7 @@ public class BaseExceptionHandler {
 
     @ExceptionHandler(value = BusinessException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public BaseResponse handleFebsException(BusinessException e) {
+    public BaseResponse handleEdenException(BusinessException e) {
         log.error("系统错误", e);
         return new BaseResponse().message(e.getMessage());
     }
@@ -79,7 +79,7 @@ public class BaseExceptionHandler {
      * 统一处理请求参数校验(实体对象传参)
      *
      * @param e BindException
-     * @return FebsResponse
+     * @return EdenResponse
      */
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
