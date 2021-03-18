@@ -28,6 +28,7 @@ dependencies {
 
     compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.2'
     compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.9.0'
+    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '2.3.1'
 
 
 }

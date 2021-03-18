@@ -19,6 +19,29 @@ spring:
     # common模块里引入了mybatis-plus-boot-starter，该starter包含数据库自动装配配置，而test模块并没有配置数据库
     # 所以我们需要在它们的配置文件application.yml里添加如下配置来关闭数据库自动装配:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: eden
+        password: 123456
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 表示将SBA客户端的所有监控端点都暴露给SBA服务端；
+        include: '*'
+  endpoint:
+    health:
+      # 表示总是展示详细的健康信息。
+      show-details: ALWAYS
 
 eureka:
   instance:

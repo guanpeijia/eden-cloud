@@ -21,6 +21,12 @@ spring:
           password: root
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://localhost:3306/eden?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: eden
+        password: 123456
   redis:
     database: 0
     host: 127.0.0.1
@@ -73,3 +79,20 @@ security:
       #1.到认证服务器里校验当前请求头中的令牌是否为合法的令牌；
       #2.通过当前令牌获取对应的用户信息。
       user-info-uri: http://localhost:8301/auth/user
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 表示将SBA客户端的所有监控端点都暴露给SBA服务端；
+        include: '*'
+  endpoint:
+    health:
+      # 表示总是展示详细的健康信息。
+      show-details: ALWAYS

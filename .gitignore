@@ -35,8 +35,8 @@ build/
 # Gradle files
 .gradle/
 gradle/
-build/
-*/build/
+**/build/
+**/out
 gradlew
 gradlew.bat
 .mvn
