@@ -1,4 +1,4 @@
-package com;
+package com.peijia;
 
 import com.peijia.common.annotation.EnableEdenAuthExceptionHandler;
 import com.peijia.common.annotation.EnableEdenServerProtect;

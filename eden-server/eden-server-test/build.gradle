@@ -1,25 +1,13 @@
-plugins {
-    id 'org.springframework.boot' version '2.3.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'java'
-}
-
-group 'com.peijia'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
     compile project(':eden-common:eden-common-core')
+    compile project(':eden-server')
+
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul', version: '2.2.5.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-oauth2
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2', version: '2.2.4.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.2.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.2.4.RELEASE'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
 }

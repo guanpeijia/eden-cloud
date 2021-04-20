@@ -1,25 +1,34 @@
-//buildScript块的repositories主要是为了Gradle脚本自身的执行，获取脚本依赖插件。
+//buildScript块的repositories主要是为了  “Gradle脚本自身”  的执行，获取脚本依赖插件。
 buildscript {
-    repositories {
-        mavenLocal()
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        maven { url "https://oss.sonatype.org/content/groups/public/" }
-        maven { url "https://repo.spring.io/libs-milestone/" }
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        //classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        //classpath "se.transmode.gradle:gradle-docker:${transmodeGradleDockerVersion}"
-    }
+
 }
+
+plugins {
+    id 'org.springframework.boot' version '2.3.5.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE' apply false
+    id 'java'
+}
+
+
+ext {
+    set('springCloudVersion', "Hoxton.SR8")
+}
+
 
 allprojects {
     group 'com.peijia'
     version '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
 
-//    apply plugin: 'java'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
     apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
+    //指定编码格式
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
 
     //allprojects块的repositories用于多项目构建，为所有项目提供共同所需依赖包。而子项目可以配置自己的repositories以获取自己独需的依赖包。
     repositories {
@@ -30,8 +39,27 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
 }
 
+//  allprojects是对所有project的配置，包括Root Project。
+// 而subprojects是对所有Child Project的配置。
 subprojects {
-
+    test {
+        useJUnitPlatform()
+    }
 }
+
+//打包源码
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+bootJar {
+    enabled = false
+}
+

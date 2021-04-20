@@ -1,14 +1,12 @@
-plugins {
-    id 'java'
+bootJar {
+    enabled = false
 }
 
-group 'com.peijia'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+jar {
+    enabled = true
 }
 
 dependencies {
+    compile project(':eden-server')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
