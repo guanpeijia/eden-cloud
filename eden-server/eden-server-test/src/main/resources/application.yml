@@ -2,6 +2,17 @@ server:
   port: 8202
 
 spring:
+  zipkin:
+    sender:
+      type: rabbit
+    sleuth:
+      sampler:
+        probability: 1
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: febs
+      password: 123456
   application:
     name: Eden-Server-Test
   redis:
@@ -25,7 +36,6 @@ spring:
         url: http://localhost:8401
         username: eden
         password: 123456
-
 info:
   app:
     name: ${spring.application.name}
@@ -72,4 +82,5 @@ feign:
   hystrix:
     enabled: true
 hystrix:
+  #配置把SecurityContext对象从你当前主线程传输到Hystrix线程
   shareSecurityContext: true

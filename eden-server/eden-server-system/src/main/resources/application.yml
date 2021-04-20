@@ -43,8 +43,10 @@ spring:
     # 所以我们需要在它们的配置文件application.yml里添加如下配置来关闭数据库自动装配:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
+  # > C:
+  # >cd "C:\software\RabbitMQ Server\rabbitmq_server-3.8.14\sbin"
+  # rabbitmq-plugins enable rabbitmq_management
   #java -jar  C:\software\zipkin\zipkin.jar --server.port=8402 --zipkin.storage.type=mysql --zipkin.storage.mysql.db=eden --zipkin.storage.mysql.username=root --zipkin.storage.mysql.password=root --zipkin.storage.mysql.host=localhost --zipkin.storage.mysql.port=3306 --zipkin.collector.rabbitmq.addresses=localhost:5672 --zipkin.collector.rabbitmq.username=eden --zipkin.collector.rabbitmq.password=123456
-  # >cd "C:\software\RabbitMQ Server\rabbitmq_server-3.8.14\sbin" rabbitmq-plugins enable rabbitmq_management
   zipkin:
     sender:
       type: rabbit
